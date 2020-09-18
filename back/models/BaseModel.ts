@@ -5,3 +5,6 @@ export default class BaseModel {
         return data;
     }
 }
+
+
+

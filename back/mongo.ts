@@ -9,3 +9,7 @@ const db = client.database(Deno.env.get("DB_NAME") || "");
 export default db;
 
 export const userCollection = db.collection('users');
+
+
+
+

@@ -30,3 +30,4 @@ export const authMiddleware = async (ctx: RouterContext, next: Function) => {
         ctx.response.status = 401;
     }
 };
+
