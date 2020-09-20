@@ -1,6 +1,6 @@
 <script lang="ts">
     import Header from './Header.svelte';
-    import Dock from './Dock.svelte';
+    import Dock from '../dock/Dock.svelte';
     let backImg = "images/mount.jpg";
 </script>
 

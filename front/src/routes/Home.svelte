@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Layout from '../components/common/Layout.svelte'
+    import FindContainer from '../components/find/FindContainer.svelte';
 </script>
 
 <div>
 
-    Home
+    <FindContainer />
 </div>
