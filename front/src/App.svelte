@@ -3,13 +3,16 @@
     import { userCheckDone } from './store/user';
     import Router from 'svelte-spa-router';
     import routes from './routes';
-    import Header from './components/common/Header.svelte';
+    import Layout from './components/common/Layout.svelte'
+
 </script>
 
 <UserObserver />
 {#if $userCheckDone}
-    <Header />
-    <Router {routes} />
+    <Layout >
+        <Router {routes} />
+    </Layout>
+
 {/if}
 
 
