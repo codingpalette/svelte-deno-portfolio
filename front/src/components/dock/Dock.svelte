@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { link } from 'svelte-spa-router';
+    import active from 'svelte-spa-router/active';
+
     import DockList from './DockList.svelte';
     import Fa from 'svelte-fa';
     import { faHome, faUser, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
@@ -8,9 +11,11 @@
 
 <div id="dock">
     <ul class="dock_content">
-        <DockList find={userFind}>
-            <Fa icon={faUser} size="lg" />
-        </DockList>
+        <li>
+            <a href="/about" use:link use:active class="icon_btn">
+                <Fa icon={faUser} size="lg" />
+            </a>
+        </li>
         <DockList find={userFind}>
             <Fa icon={faHome} size="lg" />
         </DockList>
@@ -35,5 +40,27 @@
     .dock_content{
         display: flex;
         align-content: center;
+    }
+    li{
+        margin-left: 0.5rem;
+    }
+    li:first-child{
+        margin-left: 0;
+    }
+    .icon_btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 0.5rem;
+        background-color: #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        transition: 0.3s;
+
+    }
+    .icon_btn:hover{
+        transform: translateY(-3px);
     }
 </style>

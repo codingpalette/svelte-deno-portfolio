@@ -5,7 +5,7 @@
 </script>
 
 <div>
-    {#if $userFind}
-        <FindContainer target={userFind} />
-    {/if}
+    <!--{#if $userFind}-->
+    <!--    <FindContainer target={userFind} />-->
+    <!--{/if}-->
 </div>

@@ -33,7 +33,7 @@
 
 <header>
     <h1>
-        <a href="/" use:link  class="logo_box">
+        <a href="/" use:link class="logo_box">
             <img src={logo} alt="">
         </a>
     </h1>
@@ -49,12 +49,6 @@
     <div class="date_box">
         {hours}:{minutes}
     </div>
-<!--    <a href="/about" use:link use:active>About</a>-->
-<!--    {#if !$currentUser}-->
-<!--    <a href="/auth"  use:link use:active>로그인</a>-->
-<!--    {:else}-->
-<!--    <button type="button" on:click={onClickLogOut}>로그아웃</button>-->
-<!--    {/if}-->
 </header>
 
 
@@ -66,7 +60,7 @@
     header {
         display: flex;
         align-items: center;
-        background-color: #18283f;
+        background-color: rgba(0, 0, 0, 0.9);
         width: 100%;
         height: 35px;
         padding: 0 1rem;

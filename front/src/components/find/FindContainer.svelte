@@ -1,8 +1,9 @@
 <script lang="ts">
-    export let target;
+
+    import { push } from 'svelte-spa-router';
 
     const onClickTargetClose = () => {
-        $target = false;
+        push('/')
     }
 </script>
 
@@ -14,7 +15,7 @@
         </button>
     </header>
     <div class="content">
-
+        <slot></slot>
     </div>
 </div>
 
