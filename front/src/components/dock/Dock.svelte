@@ -1,17 +1,22 @@
 <script lang="ts">
     import DockList from './DockList.svelte';
     import Fa from 'svelte-fa';
-    import { faHome, faUser } from "@fortawesome/free-solid-svg-icons";
+    import { faHome, faUser, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+
+    import { userFind } from '../../store/find'
 </script>
 
 
 <div id="dock">
     <ul class="dock_content">
-        <DockList>
+        <DockList find={userFind}>
             <Fa icon={faUser} size="lg" />
         </DockList>
-        <DockList>
+        <DockList find={userFind}>
             <Fa icon={faHome} size="lg" />
+        </DockList>
+        <DockList find={userFind}>
+            <Fa icon={faSignInAlt} size="lg" />
         </DockList>
     </ul>
 </div>

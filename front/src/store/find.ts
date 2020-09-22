@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const userFind = writable(false);
+export const userFind:boolean = writable(false);

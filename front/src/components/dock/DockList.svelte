@@ -1,9 +1,13 @@
 <script lang="ts">
+    export let find = false;
 
+    const onClickFindOpen = () => {
+        $find = true;
+    }
 </script>
 
 <li>
-    <button class="icon_btn">
+    <button class="icon_btn" on:click={onClickFindOpen}>
         <slot></slot>
     </button>
 </li>

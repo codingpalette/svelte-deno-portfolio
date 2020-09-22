@@ -6,6 +6,6 @@
 
 <div>
     {#if $userFind}
-        <FindContainer />
+        <FindContainer target={userFind} />
     {/if}
 </div>

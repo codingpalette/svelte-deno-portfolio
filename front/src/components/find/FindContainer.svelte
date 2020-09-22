@@ -1,10 +1,14 @@
 <script lang="ts">
+    export let target;
 
+    const onClickTargetClose = () => {
+        $target = false;
+    }
 </script>
 
 <div class="container">
     <header class="container_header">
-        <button type="button" class="ball">
+        <button type="button" class="ball" on:click={onClickTargetClose}>
             <span class="line1"></span>
             <span class="line2"></span>
         </button>
