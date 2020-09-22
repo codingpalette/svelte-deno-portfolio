@@ -12,6 +12,7 @@
                 return
             }
             const res = await check();
+            console.log(res)
             $currentUser = {
                 id: res.data.id,
                 email: res.data.email,

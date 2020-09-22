@@ -3,7 +3,7 @@
     import { userCheckDone } from './store/user';
     import Router from 'svelte-spa-router';
     import routes from './routes';
-    import Layout from './components/common/Layout.svelte'
+    import Layout from './components/common/Layout.svelte';
 
 </script>
 

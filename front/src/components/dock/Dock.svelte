@@ -2,7 +2,6 @@
     import DockList from './DockList.svelte';
     import Fa from 'svelte-fa';
     import { faHome, faUser, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-
     import { userFind } from '../../store/find'
 </script>
 

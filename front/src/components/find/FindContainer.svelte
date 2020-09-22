@@ -23,8 +23,8 @@
         position: fixed;
         left: 2%;
         right: 2%;
-        top: 3%;
-        height: calc(94% - 78px);
+        top: 45px;
+        height: calc(97% - 115px);
         box-sizing: border-box;
         border-radius: 6px;
         box-shadow: 0 30px 60px 12px rgba(0, 0, 33, 0.05), 0 4px 24px 0 rgba(0, 0, 33, 0.05), 0 0 1px 0 rgba(0, 0, 33, 0.09);
