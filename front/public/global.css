@@ -65,15 +65,13 @@ input[type='search']::-webkit-search-cancel-button {
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean');
 
 
-body, th, td, input, select, textarea, button, div, p, span {
+body, th, td, input, select, textarea, button, div, p, span, a {
     line-height: 1;
     font-family: 'Noto Sans KR', sans-serif;
     color: #333
 }
 
-/* color값은 디자인가이드에 맞게사용 */
 a {
-    color: #333;
     text-decoration: none
 }
 
@@ -123,4 +121,48 @@ html {
     html {
         font-size: 16px;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* input 기본 스타일 초기화 */
+input {
+    appearance: none;
+    border:none;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+
+/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+input::-ms-clear { display: none; }
+
+
+/* input type number 에서 화살표 제거 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+
+/* Select box 스타일 초기화 */
+select {
+    appearance: none;
 }
