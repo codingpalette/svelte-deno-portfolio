@@ -101,29 +101,6 @@
     </FindContainer>
 </div>
 
-<!--{#if mode === 'login'}-->
-<!--    <div>-->
-<!--        <h2>로그인</h2>-->
-<!--        <form on:submit|preventDefault={submitLogin}>-->
-<!--            <input type="text" placeholder="이메일" bind:value={email}>-->
-<!--            <input type="password" placeholder="비밀번호" bind:value={password}>-->
-<!--            <button type="submit">로그인</button>-->
-<!--        </form>-->
-<!--        <button type="button" on:click={()=> mode = 'register'}>회원가입 하기</button>-->
-<!--    </div>-->
-<!--{:else}-->
-<!--    <div>-->
-<!--        <h2>회원가입</h2>-->
-<!--        <form on:submit|preventDefault={submitRegister}>-->
-<!--            <input type="text" placeholder="이름" bind:value={name}>-->
-<!--            <input type="text" placeholder="이메일" bind:value={email}>-->
-<!--            <input type="password" placeholder="비밀번호" bind:value={password}>-->
-<!--            <button type="submit">가입</button>-->
-<!--        </form>-->
-<!--        <button type="button" on:click={()=> mode = 'login'}>로그인 하기</button>-->
-<!--    </div>-->
-<!--{/if}-->
-
 
 <style>
     .auto_content{
@@ -134,12 +111,13 @@
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        overflow: auto;
     }
 
     .auto_content .left{
-        width: 48%;
-        max-width: 600px;
+        width: 50%;
+        max-width: 500px;
     }
     .auto_content .left h2{
         font-size: 2rem;
@@ -147,12 +125,14 @@
         margin-bottom: 2rem;
     }
     .auto_content .right{
-        width: 48%;
+        width: 50%;
+        max-width: 500px;
     }
     .auto_content .right img{
         display: block;
         width: 100%;
         height: auto;
+
     }
     .input_box{
         margin-bottom: 1rem;
@@ -162,5 +142,20 @@
         color: #6C63FF;
         font-size: 12px;
         margin-top: 1rem;
+    }
+
+    @media screen and (max-width:767px) {
+        .auto_content{
+            flex-wrap: wrap;
+        }
+        .auto_content .left{
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .auto_content .right{
+            width: 100%;
+            max-width: 100%;
+        }
     }
 </style>

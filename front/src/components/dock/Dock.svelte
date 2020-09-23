@@ -4,7 +4,7 @@
 
     import DockList from './DockList.svelte';
     import Fa from 'svelte-fa';
-    import { faHome, faUser, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+    import { faHome, faUser, faSignInAlt, faBook, faThLarge } from "@fortawesome/free-solid-svg-icons";
     import { userFind } from '../../store/find'
 </script>
 
@@ -14,6 +14,16 @@
         <li>
             <a href="/about" use:link use:active class="icon_btn">
                 <Fa icon={faUser} size="lg" />
+            </a>
+        </li>
+        <li>
+            <a href="/portfolio" use:link use:active class="icon_btn">
+                <Fa icon={faThLarge} size="lg" />
+            </a>
+        </li>
+        <li>
+            <a href="/" use:link use:active class="icon_btn">
+                <Fa icon={faBook} size="lg" />
             </a>
         </li>
         <DockList find={userFind}>
@@ -58,9 +68,14 @@
         width: 40px;
         height: 40px;
         transition: 0.3s;
+        position: relative;
 
     }
     .icon_btn:hover{
-        transform: translateY(-3px);
+        transform: translateY(-4px);
     }
+    :global(.dock_content .icon_btn.active) {
+        transform: translateY(-4px);
+    }
+
 </style>
