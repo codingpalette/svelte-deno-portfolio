@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="/" use:link use:active class="icon_btn">
+            <a href="/gustbook" use:link use:active class="icon_btn">
                 <Fa icon={faBook} size="lg" />
             </a>
         </li>
