@@ -47,6 +47,9 @@
     node: [
       'Express',
       'Sequelize',
+    ],
+    deno: [
+      'oak'
     ]
   },
 
@@ -59,7 +62,7 @@
 
   Database: {
     RDBMS: ['MySQL'],
-    NoSQL: ['Firebase']
+    NoSQL: ['Firebase', 'Mongodb']
   },
 }`}
                 </code>
@@ -79,6 +82,7 @@
         height: 100%;
         padding: 1rem;
         box-sizing: border-box;
+        line-height: 1.6;
     }
 
 </style>

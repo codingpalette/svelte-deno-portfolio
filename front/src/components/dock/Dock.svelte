@@ -26,12 +26,12 @@
                 <Fa icon={faBook} size="lg" />
             </a>
         </li>
-        <DockList find={userFind}>
-            <Fa icon={faHome} size="lg" />
-        </DockList>
-        <DockList find={userFind}>
-            <Fa icon={faSignInAlt} size="lg" />
-        </DockList>
+<!--        <DockList find={userFind}>-->
+<!--            <Fa icon={faHome} size="lg" />-->
+<!--        </DockList>-->
+<!--        <DockList find={userFind}>-->
+<!--            <Fa icon={faSignInAlt} size="lg" />-->
+<!--        </DockList>-->
     </ul>
 </div>
 

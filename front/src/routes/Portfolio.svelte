@@ -86,7 +86,7 @@
         width: 100%;
         border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 30px 60px 12px rgba(0, 0, 33, 0.05), 0 4px 24px 0 rgba(0, 0, 33, 0.05), 0 0 1px 0 rgba(0, 0, 33, 0.09);
+        border:1px solid #888;
     }
 
     .portfolio_content ul li img{
