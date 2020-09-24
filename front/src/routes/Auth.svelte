@@ -16,10 +16,10 @@
     })
 
     let mode = 'login';
-
     let name = '';
     let email = '';
     let password = '';
+    let loading = false;
 
     const onClickModeChange = () => {
         name = '';
@@ -33,6 +33,16 @@
     }
 
     const submitLogin = async () => {
+        loading = true;
+        if (email === '') {
+            alert('이메일을 입력해주세요.')
+            loading = false;
+            return false;
+        } else if (password === '') {
+            alert('비밀번호를 입력해주세요.')
+            loading = false;
+            return false;
+        }
         try {
             const res = await login({email, password})
             // console.log(res)
@@ -44,17 +54,41 @@
             }
             push('/')
         } catch (e) {
-            console.error(e)
+            console.error(e);
+            alert(e.response.data.message);
+        } finally {
+            loading = false;
         }
     }
 
     const submitRegister = async () => {
+        loading = true;
+        if (name === '') {
+            alert('이름을 입력해주세요.')
+            loading = false;
+            return false;
+        } else if (email === '') {
+            alert('이메일을 입력해주세요.')
+            loading = false;
+            return false;
+        } else if (password === '') {
+            alert('비밀번호를 입력해주세요.')
+            loading = false;
+            return false;
+        }
         try {
             const res = await register({ name, email, password })
             // console.log(res)
+            name = '';
+            email = '';
+            password = '';
+            mode = 'login'
             alert('회원가입 완료')
         } catch (e) {
-            console.error(e)
+            console.error(e);
+            alert(e.response.data.message);
+        } finally {
+            loading = false;
         }
     }
 
@@ -74,12 +108,16 @@
                         <div class="input_box">
                             <Input type="password" plaintext placeholder="비밀번호" bind:value={password}  />
                         </div>
-                        <Button type="submit" block>로그인</Button>
+                        {#if !loading}
+                            <Button type="submit" block style="width: 101px">로그인</Button>
+                        {:else}
+                            <Button disabled block style="width: 101px"><span class="donutSpinner"></span></Button>
+                        {/if}
                         <button type="button" class="mode_change" on:click={onClickModeChange}>회원가입 하기</button>
                     </form>
                 {:else}
                     <h2>Sign up</h2>
-                    <form on:submit|preventDefault={submitLogin}>
+                    <form on:submit|preventDefault={submitRegister}>
                         <div class="input_box">
                             <Input type="text" plaintext placeholder="이름" bind:value={name}  />
                         </div>
@@ -89,7 +127,11 @@
                         <div class="input_box">
                             <Input type="password" plaintext placeholder="비밀번호" bind:value={password}  />
                         </div>
-                        <Button type="submit" block>회원가입</Button>
+                        {#if !loading}
+                            <Button type="submit" block style="width: 114px">회원가입</Button>
+                        {:else}
+                            <Button disabled block style="width: 114px"><span class="donutSpinner"></span></Button>
+                        {/if}
                         <button type="button" class="mode_change" on:click={onClickModeChange}>로그인 하기</button>
                     </form>
                 {/if}
@@ -158,4 +200,26 @@
             max-width: 100%;
         }
     }
+
+
+    .donutSpinner {
+        display: block;
+        border: 4px solid hsl(222, 100%, 95%);;
+        border-left-color: #6C63FF;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        animation: donut-spin 1.2s linear infinite;
+        margin: 0 auto;
+    }
+
+    @keyframes donut-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
 </style>

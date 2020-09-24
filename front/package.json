@@ -4,6 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "start:dev": "sirv public --single --dev --port 5000",
     "start": "sirv public",
     "validate": "svelte-check"
   },

@@ -90,12 +90,13 @@
         padding: 0 30px;
         vertical-align: middle;
         font-size: 14px;
-        line-height: 38px;
+        height: 40px;
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         transition: .1s ease-in-out;
         transition-property: color,background-color,border-color;
+        position: relative;
     }
     .btn-default{
         background-color: transparent;
