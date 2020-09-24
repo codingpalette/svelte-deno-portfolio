@@ -6,13 +6,15 @@ export default class User extends BaseModel {
     public name: string = "";
     public email: string = "";
     public password: string = "";
+    public level: number = 1;
 
-    constructor({ id = "", name = "", email = "", password = "" }) {
+    constructor({ id = "", name = "", email = "", password = "", level = 1 }) {
         super();
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.level = level
     }
 
     static async findOne(params: object): Promise<User | null> {

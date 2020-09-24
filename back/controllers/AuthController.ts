@@ -18,17 +18,18 @@ export class AuthController {
         let user = await User.findOne({ email });
         if (user) {
             ctx.response.status = 422;
-            ctx.response.body = { message: "Email is already used" };
+            ctx.response.body = { message: "이미 사용중인 이메일 입니다." };
             return;
         }
         const hashedPassword = hashSync(password);
-        user = new User({ name, email, password: hashedPassword });
+        user = new User({ name, email, password: hashedPassword, level:1 });
         await user.save();
         ctx.response.status = 201;
         ctx.response.body = {
             id: user.id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            level: user.level
         };
     }
     async login(ctx: RouterContext) {
@@ -43,7 +44,7 @@ export class AuthController {
         let user = await User.findOne({ email });
         if (!user) {
             ctx.response.status = 422;
-            ctx.response.body = { message: "Incorrect email" };
+            ctx.response.body = { message: "존재하지 않는 이메일 입니다." };
             return;
         }
         if (!compareSync(password, user.password)) {
@@ -66,6 +67,7 @@ export class AuthController {
             id: user.id,
             name: user.name,
             email: user.email,
+            level: user.level,
             jwt,
         };
     }
@@ -75,6 +77,7 @@ export class AuthController {
             id: user.id,
             name: user.name,
             email: user.email,
+            level: user.level,
         };
     }
 }
