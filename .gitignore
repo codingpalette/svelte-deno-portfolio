@@ -47,3 +47,4 @@ Thumbs.db
 
 .idea
 .env
+.deno_plugins
