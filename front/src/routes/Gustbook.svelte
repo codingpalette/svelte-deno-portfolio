@@ -1,11 +1,22 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import client from '../api/client';
-    import { create } from "../api/book";
+    import { create, getBooks } from "../api/book";
 
     import FindContainer from '../components/find/FindContainer.svelte';
     import Input from '../components/utils/Input.svelte';
     import Button from '../components/utils/Button.svelte';
     import Spinner from "../components/utils/Spinner.svelte";
+
+    onMount( async () => {
+        try {
+            const res = await getBooks();
+
+            console.log(res)
+        } catch (e) {
+            console.error(e)
+        }
+    })
 
     let content = ''
 

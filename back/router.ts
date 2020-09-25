@@ -15,6 +15,7 @@ router
     .post('/auth/login', authController.login)
     .get('/auth/check', authMiddleware, authController.check)
     .post('/book/create', authMiddleware, bookController.create)
+    .get('/book/books', bookController.getBooks)
 
 
 export default router;
