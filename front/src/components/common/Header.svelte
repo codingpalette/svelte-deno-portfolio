@@ -10,7 +10,7 @@
 
     const onClickLogOut = () => {
         localStorage.removeItem('jwt_key');
-        $currentUser = null
+        $currentUser = null;
     }
 
     let today = new Date();

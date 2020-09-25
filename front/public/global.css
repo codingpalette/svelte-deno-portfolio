@@ -140,13 +140,13 @@ html {
 
 
 /* input 기본 스타일 초기화 */
-input {
+input, textarea {
     appearance: none;
     border:none;
 }
 
 
-input:focus {
+input:focus, textarea:focus {
     outline: none;
 }
 

@@ -6,6 +6,7 @@
     import FindContainer from '../components/find/FindContainer.svelte';
     import Input from '../components/utils/Input.svelte';
     import Button from '../components/utils/Button.svelte';
+    import Spinner from '../components/utils/Spinner.svelte'
 
     let mobileLoginImg = "images/mobile_login.svg";
 
@@ -111,7 +112,7 @@
                         {#if !loading}
                             <Button type="submit" block style="width: 101px">로그인</Button>
                         {:else}
-                            <Button disabled block style="width: 101px"><span class="donutSpinner"></span></Button>
+                            <Button disabled block style="width: 101px"><Spinner /></Button>
                         {/if}
                         <button type="button" class="mode_change" on:click={onClickModeChange}>회원가입 하기</button>
                     </form>
@@ -130,7 +131,7 @@
                         {#if !loading}
                             <Button type="submit" block style="width: 114px">회원가입</Button>
                         {:else}
-                            <Button disabled block style="width: 114px"><span class="donutSpinner"></span></Button>
+                            <Button disabled block style="width: 114px"><Spinner /></Button>
                         {/if}
                         <button type="button" class="mode_change" on:click={onClickModeChange}>로그인 하기</button>
                     </form>
@@ -202,24 +203,5 @@
     }
 
 
-    .donutSpinner {
-        display: block;
-        border: 4px solid hsl(222, 100%, 95%);;
-        border-left-color: #6C63FF;
-        border-radius: 50%;
-        width: 14px;
-        height: 14px;
-        animation: donut-spin 1.2s linear infinite;
-        margin: 0 auto;
-    }
-
-    @keyframes donut-spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
 
 </style>

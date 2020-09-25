@@ -101,6 +101,14 @@
             {placeholder}
         />
     {/if}
+{:else if tag === 'textarea'}
+    <textarea
+        class={classes}
+        bind:value
+        {placeholder}
+        {name}
+        rows="5"
+    />
 {/if}
 
 
@@ -154,5 +162,23 @@
         padding-left: 8px;
         padding-right: 8px;
         font-size: 12px;
+    }
+
+    textarea{
+        max-width: 100%;
+        width: 100%;
+        padding: 10px;
+        background: #fff;
+        border:1px solid #e5e5e5;
+        transition: 0.2s ease-in-out;
+        transition-property: color,background-color,border;
+        vertical-align: middle;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #666;
+    }
+
+    textarea:focus{
+        border-color: #6C63FF;
     }
 </style>
