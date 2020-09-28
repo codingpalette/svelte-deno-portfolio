@@ -6,10 +6,12 @@ export default class Book extends BaseModel {
 
     constructor(
         public userId: string,
+        public title: string,
         public content: string,
     ) {
         super();
         this.userId = userId;
+        this.title = title;
         this.content = content;
     }
 
@@ -30,6 +32,7 @@ export default class Book extends BaseModel {
         data = BaseModel.prepare(data);
         const book = new Book(
             data.userId,
+            data.title,
             data.content,
         );
         book.id = data.id;
