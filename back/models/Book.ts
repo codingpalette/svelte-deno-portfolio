@@ -15,9 +15,9 @@ export default class Book extends BaseModel {
         this.content = content;
     }
 
-    static async findAll(): Promise<Book[]> {
-        const page = 1;
-        const books = await bookCollection.find({}, { skip: (page - 1) * 10, limit:10 });
+    static async findAll(page: any): Promise<Book[]> {
+        // const books = await bookCollection.find({}).skip((page - 1) * 5).limit(5);
+        const books = await bookCollection.find({}).skip((page - 1) * 5).limit(5);
         return books.map((book: any) => Book.prepare(book));
     }
 

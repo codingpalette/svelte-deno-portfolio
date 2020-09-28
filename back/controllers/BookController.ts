@@ -6,8 +6,9 @@ import User from "../models/User.ts";
 
 export class BookController {
     async getBooks(ctx: RouterContext) {
+        const page = ctx.params.page;
         // const { value } = ctx.request.body({ type: 'json' });
-        const books = await Book.findAll();
+        const books = await Book.findAll(page);
         // console.log(books)
         ctx.response.body = books;
     }

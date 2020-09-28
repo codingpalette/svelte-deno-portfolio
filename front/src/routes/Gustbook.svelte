@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { currentUser } from '../store/user';
     import { onMount } from 'svelte';
     import client from '../api/client';
     import { create, getBooks } from "../api/book";
@@ -8,11 +9,16 @@
     import Button from '../components/utils/Button.svelte';
     import Spinner from "../components/utils/Spinner.svelte";
 
+    let page = 1;
+    let booksData = null;
+
     onMount( async () => {
         try {
-            const res = await getBooks();
-
-            console.log(res)
+            const res = await getBooks({page});
+            booksData = res.data.sort((a,b) => {
+                return a.id > b.id ? -1 : a.id < b.id ? 1 : 0
+            })
+            // console.log(booksData)
         } catch (e) {
             console.error(e)
         }
@@ -23,6 +29,10 @@
     let bookAddLoading = false;
 
     const submitBook = async () => {
+        if (!$currentUser) {
+            alert('로그인 후 이용해주세요.')
+            return false;
+        }
         if (title === '') {
             alert('제목을 입력해주세요.')
             return false;
@@ -40,7 +50,8 @@
         }
         try {
             const res = await create({title, content})
-            console.log(res)
+            // console.log(res)
+            booksData = [res.data, ...booksData]
             title = '';
             content = '';
         } catch (e) {
@@ -64,15 +75,15 @@
                 {/if}
             </form>
         </div>
-        <div class="book_list">
-            adssa
-        </div>
-        <div class="book_list">
-            adssa
-        </div>
-        <div class="book_list">
-            adssa
-        </div>
+        {#if booksData}
+            {#each booksData as book}
+                <div class="book_list">
+                    <strong>{book.title}</strong>
+                    <p>{book.content}</p>
+                </div>
+            {/each}
+        {/if}
+
     </div>
 </FindContainer>
 
@@ -81,14 +92,16 @@
         padding: 1rem;
         box-sizing:border-box;
         display: flex;
-        align-items: flex-start;
-        flex-wrap:wrap;
-        max-width: 600px;
+        flex-direction: column;
+        align-items: center;
         margin: 0 auto;
+        overflow: auto;
+        height: 100%;
     }
 
     .book_content > div{
         width: 100%;
+        max-width: 600px;
         padding: 0.75rem;
         box-sizing: border-box;
         border:1px solid #ddd;
@@ -104,6 +117,18 @@
     :global(.book_form .book_btn) {
         width: 100%;
         margin-top: 0.75rem;
+    }
+
+    .book_list strong{
+        display: block;
+        font-size: 1.2rem;
+        color: #000;
+        margin-bottom: 0.5rem;
+    }
+
+    .book_list p{
+        color: #777;
+        font-size: 0.9rem;
     }
 
 </style>
