@@ -2,7 +2,7 @@
     import { currentUser } from '../store/user';
     import { onMount } from 'svelte';
     import client from '../api/client';
-    import { create, getBooks } from "../api/book";
+    import { create, getBooks, bookRemove } from "../api/book";
 
     import FindContainer from '../components/find/FindContainer.svelte';
     import Input from '../components/utils/Input.svelte';
@@ -60,6 +60,17 @@
             bookAddLoading = false;
         }
     }
+
+    const onClickBookRemove = (id) => async () => {
+        // console.log(id)
+        try {
+            await bookRemove({id});
+            booksData = booksData.filter((v) => v.id !== id);
+        } catch (e) {
+            console.error(e)
+        }
+
+    }
 </script>
 
 <FindContainer>
@@ -78,7 +89,18 @@
         {#if booksData}
             {#each booksData as book}
                 <div class="book_list">
-                    <strong>{book.title}</strong>
+                    <div class="book_header">
+                        <strong>{book.title}</strong>
+                        {#if $currentUser}
+                            {#if book.userId === $currentUser.id }
+                                <div class="option">
+                                    <button type="button">수정</button>
+                                    <button type="button" on:click={onClickBookRemove(book.id)}>삭제</button>
+                                </div>
+                            {/if}
+                        {/if}
+                    </div>
+
                     <p>{book.content}</p>
                 </div>
             {/each}
@@ -118,12 +140,29 @@
         width: 100%;
         margin-top: 0.75rem;
     }
-
-    .book_list strong{
+    .book_list .book_header {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+    .book_list .book_header strong{
         display: block;
         font-size: 1.2rem;
         color: #000;
-        margin-bottom: 0.5rem;
+    }
+    .book_list .book_header .option{
+        margin-left: auto;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+    }
+    .book_list .book_header .option button{
+        margin-left: 0.5rem;
+        color: #ccc;
+        transition: color 0.3s;
+    }
+    .book_list .book_header .option button:hover{
+        color: #000;
     }
 
     .book_list p{

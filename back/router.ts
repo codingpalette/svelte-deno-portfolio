@@ -16,6 +16,7 @@ router
     .get('/auth/check', authMiddleware, authController.check)
     .post('/book/create', authMiddleware, bookController.create)
     .get('/book/books/:page', bookController.getBooks)
+    .delete('/book/remove/:id', authMiddleware, bookController.delete.bind(bookController) )
 
 
 export default router;

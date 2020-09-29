@@ -17,8 +17,21 @@ export default class Book extends BaseModel {
 
     static async findAll(page: any): Promise<Book[]> {
         // const books = await bookCollection.find({}).skip((page - 1) * 5).limit(5);
-        const books = await bookCollection.find({}).skip((page - 1) * 5).limit(5);
+        const books = await bookCollection.find({});
         return books.map((book: any) => Book.prepare(book));
+    }
+
+    static async findByUser(userId: string): Promise<Book[]> {
+        const books = await bookCollection.find({ userId });
+        return books.map((book: any) => Book.prepare(book));
+    }
+
+    static async findOne(id: string): Promise<Book | null> {
+        const book = await bookCollection.findOne({ _id: { $oid: id } });
+        if (!book) {
+            return null;
+        }
+        return Book.prepare(book);
     }
 
     async create() {
@@ -26,6 +39,24 @@ export default class Book extends BaseModel {
         const { $oid } = await bookCollection.insertOne(this);
         this.id = $oid;
         return this;
+    }
+
+    async update({ title, content }: { title: string; content: string }) {
+        const { modifiedCount } = await bookCollection
+            .updateOne({ _id: { $oid: this.id } }, {
+                $set: { title, content },
+            });
+
+        if (modifiedCount > 0) {
+            this.title = title;
+            this.content = content;
+        }
+        return this;
+    }
+
+
+    delete() {
+        return bookCollection.deleteOne({_id: { $oid: this.id }});
     }
 
     static prepare(data: any): Book {

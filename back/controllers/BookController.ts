@@ -3,8 +3,9 @@ import { RouterContext  } from "../deps.ts";
 
 import Book from "../models/Book.ts";
 import User from "../models/User.ts";
+import BaseBookController from "./BaseBookController.ts";
 
-export class BookController {
+export class BookController extends BaseBookController{
     async getBooks(ctx: RouterContext) {
         const page = ctx.params.page;
         // const { value } = ctx.request.body({ type: 'json' });
@@ -21,6 +22,15 @@ export class BookController {
         await book.create();
         ctx.response.status = 201;
         ctx.response.body = book;
+    }
+
+    async delete(ctx: RouterContext) {
+        const id : string = ctx.params.id!;
+        const book: Book | null = await this.findBookOrFil(id, ctx);
+        if (book) {
+            await book.delete();
+            ctx.response.status = 204;
+        }
     }
 }
 

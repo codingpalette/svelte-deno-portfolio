@@ -40,9 +40,9 @@
     <div class="icon_box">
 
         {#if !$currentUser}
-            <a href="/auth" use:link>로그인 <Fa icon={faSignInAlt} /></a>
+            <a href="/auth" use:link><span>로그인</span> <Fa icon={faSignInAlt} /></a>
         {:else}
-            <button type="button" on:click={onClickLogOut}>로그아웃 <Fa icon={faSignOutAlt} /></button>
+            <button type="button" on:click={onClickLogOut}><span>로그아웃</span> <Fa icon={faSignOutAlt} /></button>
         {/if}
     </div>
 
@@ -84,6 +84,14 @@
     .icon_box a,
     .icon_box button {
         color: #fff;
+        display: flex;
+        align-items: center;
+    }
+    .icon_box a span,
+    .icon_box button span{
+        font-size: 0.75rem;
+        color: inherit;
+        margin-right: 0.5rem;
     }
 
     .date_box{
