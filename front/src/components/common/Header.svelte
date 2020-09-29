@@ -40,9 +40,9 @@
     <div class="icon_box">
 
         {#if !$currentUser}
-            <a href="/auth" use:link use:active> <Fa icon={faSignInAlt} /></a>
+            <a href="/auth" use:link>로그인 <Fa icon={faSignInAlt} /></a>
         {:else}
-            <button type="button" on:click={onClickLogOut}><Fa icon={faSignOutAlt} /></button>
+            <button type="button" on:click={onClickLogOut}>로그아웃 <Fa icon={faSignOutAlt} /></button>
         {/if}
     </div>
 
