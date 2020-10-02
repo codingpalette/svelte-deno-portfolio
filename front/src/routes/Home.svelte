@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { userFind } from '../store/find';
+    import FindContainer from '../components/find/FindContainer.svelte'
+    import Game from '../components/utils/Game.svelte'
 
-    import FindContainer from '../components/find/FindContainer.svelte';
+
 </script>
 
 <div>
-    <!--{#if $userFind}-->
-    <!--    <FindContainer target={userFind} />-->
-    <!--{/if}-->
+    <FindContainer>
+        <Game />
+    </FindContainer>
 </div>
