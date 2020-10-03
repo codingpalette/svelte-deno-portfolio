@@ -13,6 +13,8 @@ app.use(
 app.use(router.routes());
 app.use(router.allowedMethods());
 
+// deno run -A --unstable server.ts
+
 app.use((ctx) => {
     ctx.response.body = "Hello World!";
 });
