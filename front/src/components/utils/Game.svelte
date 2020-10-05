@@ -1,11 +1,14 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy  } from 'svelte';
 
     let handleWindowClick;
     let canvasBox;
     let canvas;
 
-    onMount(() => {
+    let spawnEnemiesId;
+    let animationId;
+
+    let GameStart = () => {
         const c = canvas.getContext('2d');
 
         canvas.width = canvasBox.offsetWidth;
@@ -81,7 +84,7 @@
         const enemies = [];
 
         function spawnEnemies() {
-            setInterval(() => {
+            spawnEnemiesId = setInterval(() => {
                 const radius = Math.random() * (30 - 4) + 4;
                 let x;
                 let y;
@@ -107,7 +110,7 @@
             }, 1000)
         }
 
-        let animationId
+
         function animate() {
             animationId = requestAnimationFrame(animate);
             c.fillStyle = 'rgba(0,0,0, 0.1)';
@@ -138,15 +141,15 @@
                 }
 
                 projectiles.forEach((projectile, projectileIndex) => {
-                   const dist = Math.hypot(projectile.x - enemy.x , projectile.y - enemy.y);
+                    const dist = Math.hypot(projectile.x - enemy.x , projectile.y - enemy.y);
 
-                   // when projectiles touch enemy
-                   if (dist - enemy.radius - projectile.radius < 1) {
-                       setTimeout(() => {
-                           enemies.splice(index, 1)
-                           projectiles.splice(projectileIndex, 1)
-                       }, 0)
-                   }
+                    // when projectiles touch enemy
+                    if (dist - enemy.radius - projectile.radius < 1) {
+                        setTimeout(() => {
+                            enemies.splice(index, 1)
+                            projectiles.splice(projectileIndex, 1)
+                        }, 0)
+                    }
                 });
             })
         }
@@ -173,6 +176,15 @@
 
         animate();
         spawnEnemies();
+    }
+
+    onMount(() => {
+        GameStart()
+    })
+
+    onDestroy(() => {
+        clearInterval(spawnEnemiesId)
+        cancelAnimationFrame(animationId)
     })
 
 
